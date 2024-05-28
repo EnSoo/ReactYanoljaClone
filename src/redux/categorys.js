@@ -20,7 +20,7 @@ const initState={
 export const Classification= (category) => {
     switch(category){
         case 'Hotel' :
-            return { main:'B02', middle:'B0201', sub:'B02010100', type: 'sub'}
+            return { main:'B02', middle:'B0201', sub:'B02010100', type: 'sub '}
         case 'Pension':
             return {main:'B02', middle:'B0201', sub:'B02010700', type: 'sub'}
         case 'Residence':
