@@ -20,7 +20,7 @@ const LodgmentDetail = () => {
             headers:{"Content-Type" : "application/json"},
             body:JSON.stringify({contentid: item.contentid, title: item.title, nickname, message})
         })
-        .then(res=>res.text())
+        .then(res=>res.text( ))
         .then(text=>alert(text))
     }
 
