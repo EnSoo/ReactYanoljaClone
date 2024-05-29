@@ -25,7 +25,7 @@ root.render(
       {/* <App />  */}
       <BrowserRouter>
         <Routes>
-          <Route path='/react/tp-react-yanolja-clone' element={<Main/>}>
+          <Route path='/react/tp-react-yanolja-clone/' element={<Main/>}>
             <Route path='area' element={<Area/>} />
             <Route path='Around' element={<Around/>} />
             <Route path='wishlist' element={<Wishlist/>}/>

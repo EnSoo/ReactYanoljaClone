@@ -28,12 +28,16 @@ const LodgmentDetail = () => {
     // 1) 보낼 데이터
     // 리뷰페이지
     const [page, setPage]=useState(1)
-    const [reviewList, setReviewList]=useState()
+    // const [reviewList, setReviewList]=useState([])
+    const [reviewList, setReviewList]=useState([
+        {no:1, nickname:'이름1', message:'메시지1'},
+        {no:2, nickname:'이름2', message:'메시지2'},
+    ])
     useEffect(()=>{
         fetch(`./backend/review_list.php?page=${page}&contentid=${item.contentid}`)
         .then(res=>res.json())
-        .then(json=>setReviewList(json))
-    },[page, item.contentid])
+        .then(json=>setReviewList(json.reviewList))
+    },[page, item.contentid, reviewList])
 
     return(
         <div style={{backgroundColor:'#F2F2F2', height:'100lh'}}>
@@ -52,7 +56,8 @@ const LodgmentDetail = () => {
                 <hr></hr>
                 <h2>후기</h2>
                 <div className="reviewList">
-                    <ReviewList/>
+                    <ReviewList reviewList={reviewList}/>
+                    <hr/>
                     <form onSubmit={SubmitReview}>
                         <input placeholder="닉네임" style={{width:'20%', height:'20px'}} onChange={(e)=>setNickname(e.target.value)} value={nickname}></input>
                         <input placeholder="내용 입력" style={{width:'60%', height:'20px'}} onChange={(e)=>setMessage(e.target.value)} value={message}></input>
