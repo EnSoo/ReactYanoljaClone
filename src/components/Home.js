@@ -35,7 +35,7 @@ const Home = () => {
                     <img src={logo}/>
                     <LiaShoppingCartSolid />
                 </section>
-                <div className="SearchBoxBorder" onClick={()=>navigate('/search')}>
+                <div className="SearchBoxBorder" onClick={()=>navigate('/react/tp-react-yanolja-clone/search')}>
                     <div className="SearchBox">
                         <MdOutlineSearch className="SearchIcon"/>
                         <span className="SearchText">무엇을 하고 놀까요?</span>

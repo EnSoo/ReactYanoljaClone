@@ -14,14 +14,14 @@ const Main = () =>{
             {/* [3] 콘텐츠영역 - 여기는 페이지가 변경되어야 함. <Outlet> */}
             <main style={{flex:1}}>
                 {/* 중첩된 자식 컴포넌트들을 이곳에 그려내기 */}
-                {location.pathname !== '/' ? <Outlet/> : <Home/>}
+                {location.pathname !== '/react/tp-react-yanolja-clone/' ? <Outlet/> : <Home/>}
             </main>
             {/* [2] 공통사용 영역 - footer영역 [탭버튼] */}
             <Bnv>
                 <div>
                     <span><Link to='area'>지역</Link></span>
                     <span><Link to='Around'>내주변</Link></span>
-                    <span><Link to="/">홈</Link></span>
+                    <span><Link to="./">홈</Link></span>
                     <span><Link to='wishlist' >찜</Link></span>
                     <span><Link to='mypage'>마이</Link></span>
                 </div>

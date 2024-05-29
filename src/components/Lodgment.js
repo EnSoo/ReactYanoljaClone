@@ -5,7 +5,7 @@ const Lodgment = ({item}) => {
     const navigate = useNavigate()
 
     return(
-        <Item onClick={()=> navigate('/lodgment', {state:item})}>
+        <Item onClick={()=> navigate('/react/tp-react-yanolja-clone/lodgment', {state:item})}>
                 <Image><img src={item.firstimage}/></Image>
                 <h3>{item.title}</h3>
         </Item>
