@@ -38,7 +38,6 @@ const Container=styled.div`
     max-width: 750px;
     padding: 0;
     margin: 0 auto;
-    border: 1px dotted red;
 `   
 
 const Bnv=styled.div`
@@ -58,7 +57,6 @@ const Bnv=styled.div`
         max-width: 750px;
         flex-direction: row;
         margin: 0 auto;
-        border: 1px dotted red;
         justify-content: space-around;
         span{
             display: flex;

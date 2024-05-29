@@ -7,13 +7,26 @@ import { MdOutlineSearch } from "react-icons/md";
 import React, { Suspense, lazy, useEffect, useState } from "react";
 import LodgmentList from "./LodgmentList";
 import { useDispatch, useSelector } from "react-redux";
-import { Classification } from "../redux/categorys";
+import { Classification, setCategory } from "../redux/categorys";
 
 
 const Home = () => {
     const dispatch=useDispatch()
     const category=useSelector(state=>state.categoryReducer.category)
     const navigate = useNavigate()
+
+    //숙박업소 정보를 저장하는 state 변수
+    const [items, setItems]=useState([])
+    
+    // 현재 클릭한 카테고리 저장 state 변수
+    const [currentCategory, setCurrentCategory]=useState() 
+
+    useEffect(()=>{
+        dispatch(setCategory(currentCategory))
+        const apiUrl=category.url
+        fetch(apiUrl).then(res=>res.json()).then(json=>setItems(json.response.body.items.item)).catch(e=>console.log(e.message))
+    },[currentCategory])
+
     return (
         <Container>
             <main>
@@ -29,41 +42,41 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="QuickCategory">
-                    <label onClick={()=>dispatch(Classification('Hotel'))}> {/*소분류 B02	B0201	B02010100 */}
+                    <label onClick={()=>setCurrentCategory('Hotel')}> {/*소분류 B02	B0201	B02010100 */}
                         <img src={require('../image/hotel.png')} alt="hotel"/>
                         <p>호텔/리조트</p>
                     </label>
-                    <label onClick={()=>dispatch(Classification('Pension'))}> {/*소분류 B02	B0201	B02010700 */}
+                    <label onClick={()=>setCurrentCategory('Pension')}> {/*소분류 B02	B0201	B02010700 */}
                         <img src={require('../image/pension.png')} alt="pension"/>
                         <p>펜션/풀빌라</p>
                     </label>
-                    <label onClick={()=>dispatch(Classification('Residence'))}> {/*소분류 B02	B0201	B02011300 */}
+                    <label onClick={()=>setCurrentCategory('Residence')}> {/*소분류 B02	B0201	B02011300 */}
                         <img src={require('../image/residence.png')} alt="residence"/>
                         <p>서비스드레지던스</p>
                     </label>
-                    <label onClick={()=>dispatch(Classification('Motel'))}> {/* 소분류 B02	B0201	B02010900*/}
+                    <label onClick={()=>setCurrentCategory('Motel')}> {/* 소분류 B02	B0201	B02010900*/}
                         <img src={require('../image/motel.png')} alt="motel"/>
                         <p>모텔</p>
                     </label>
-                    <label onClick={()=>dispatch(Classification('CulturalFacilities'))}> {/* 중분류 A02	A0206*/}
+                    <label onClick={()=>setCurrentCategory('CulturalFacilities')}> {/* 중분류 A02	A0206*/}
                         <img src={require('../image/cultural-facilities.png')} alt="cultural-facilities"/>
                         <p>문화시설</p>
                     </label>
-                    <label onClick={()=>dispatch(Classification('PerformanceEvent'))}> {/* 중분류 A02	A0208*/}
+                    <label onClick={()=>setCurrentCategory('PerformanceEvent')}> {/* 중분류 A02	A0208*/}
                         <img src={require('../image/performance-event.png')} alt="performance-event"/>
                         <p>공연/행사</p>
                     </label>
-                    <label onClick={()=>dispatch(Classification('TourCourse'))}> {/* 대분류 C01 코스*/}
+                    <label onClick={()=>setCurrentCategory('TourCourse')}> {/* 대분류 C01 코스*/}
                         <img src={require('../image/tour-course.png')} alt="tour-course"/>
                         <p>관광코스</p>
                     </label>
-                    <label onClick={()=>dispatch(Classification('Leisure'))}> {/* 대분류 A03 */}
+                    <label onClick={()=>setCurrentCategory('Leisure')}> {/* 대분류 A03 */}
                         <img src={require('../image/leisure.png')} alt="leisure"/>
                         <p>레포츠</p>
                     </label>
                 </div>
                 <div style={{margin: '0 auto', textAlign: 'center'}}>
-                    <LodgmentList category={category}/>
+                    <LodgmentList items={items}/>
                 </div>
             </main>
             <footer>

@@ -13,6 +13,7 @@ import Wishlist from './tap/Wishlist';
 import Search from './page/Search';
 import rootReducer from './redux/RootReducer';
 import { Provider } from 'react-redux';
+import LodgmentDetail from './page/LodgmentDetail';
 // 보통 앱 전체에서 사용할 state를 store에 저장하기에.. 최상위.js에서 store를 생성함
 const store=createStore( rootReducer ) //store에는 리듀서를 1개만 등록할 수 있음. 그래서 여러 리듀서를 묶어주는 기능이 존재함 combine
 
@@ -20,7 +21,7 @@ const store=createStore( rootReducer ) //store에는 리듀서를 1개만 등록
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <React.StrictMode>
+    {/* <React.StrictMode> */}
       {/* <App />  */}
       <BrowserRouter>
         <Routes>
@@ -31,9 +32,10 @@ root.render(
             <Route path='mypage' element={<Mypage/>}/>
           </Route>
           <Route path='/search' element={<Search/>}/>
+          <Route path='/lodgment' element={<LodgmentDetail/>}/>
         </Routes>
       </BrowserRouter>
-    </React.StrictMode>
+    {/* </React.StrictMode> */}
   </Provider>
 );
 

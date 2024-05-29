@@ -1,7 +1,8 @@
 //(1) state : 전역저장소 store에 저장할 number의 초기값
-const serivceKey='4xuodeRe%2F8pjCdslV6gYfzQaCeC49jPH%2FqUlsYhV7BgGD3o2Qu3grRwtOU8gP4DRKf9r5GaPxN45jGAbLdBoXA%3D%3D'
+// const serivceKey='4xuodeRe%2F8pjCdslV6gYfzQaCeC49jPH%2FqUlsYhV7BgGD3o2Qu3grRwtOU8gP4DRKf9r5GaPxN45jGAbLdBoXA%3D%3D'
+const serivceKey='22U2mNAkKslzaEsDcnkuzFR34dAEsJjPxgl1W8l8UPoSAQbBntmEeflqh2xKHpTXgq5x5vdsXy6OShRHmAS0kA%3D%3D'
 const apiurl='http://apis.data.go.kr/B551011/KorService1/areaBasedList1'
-const defaultParameter='&pageNo=1&numOfRows=10&MobileApp=AppTest&MobileOS=ETC&arrange=A'
+const defaultParameter='&pageNo=1&numOfRows=100&MobileApp=AppTest&MobileOS=ETC&arrange=A&_type=json'
 const initState={
     category:{
         main:'B02',
@@ -17,7 +18,7 @@ const initState={
 
 
 // 액션객체를 리턴하는 함수
-export const Classification= (category) => {
+export const setCategory= (category) => {
     switch(category){
         case 'Hotel' :
             return { main:'B02', middle:'B0201', sub:'B02010100', type: 'sub'}
