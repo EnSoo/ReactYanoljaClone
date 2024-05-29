@@ -15,7 +15,6 @@ const LodgmentDetail = () => {
     // 2) 서버 전송
     const SubmitReview= (e) =>{
         e.preventDefault()
-
         fetch('./backend/review_write.php',{
             method:'POST',
             headers:{"Content-Type" : "application/json"},
@@ -24,6 +23,17 @@ const LodgmentDetail = () => {
         .then(res=>res.text())
         .then(text=>alert(text))
     }
+
+    // 리뷰 리스트
+    // 1) 보낼 데이터
+    // 리뷰페이지
+    const [page, setPage]=useState(1)
+    const [reviewList, setReviewList]=useState()
+    useEffect(()=>{
+        fetch(`./backend/review_list.php?page=${page}&contentid=${item.contentid}`)
+        .then(res=>res.json())
+        .then(json=>setReviewList(json))
+    },[page, item.contentid])
 
     return(
         <div style={{backgroundColor:'#F2F2F2', height:'100lh'}}>
