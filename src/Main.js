@@ -1,12 +1,13 @@
-import { Link, Outlet, useLocation } from "react-router-dom"
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom"
 import Home from "./components/Home"
 import styled from "styled-components"
+import { useEffect } from "react"
 
 const Main = () =>{
 
     //현재 사이트의 위치
     const location = useLocation()
-
+    
     return(
         <Container>
             {/* [1] 공통사용 영역 - 앱 제목줄 header 영역 */}
