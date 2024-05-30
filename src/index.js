@@ -23,16 +23,16 @@ root.render(
   <Provider store={store}>
     {/* <React.StrictMode> */}
       {/* <App />  */}
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
-          <Route path='/react/tp-react-yanolja-clone/' element={<Main/>}>
+          <Route path='/' element={<Main/>}>
             <Route path='area' element={<Area/>} />
             <Route path='Around' element={<Around/>} />
             <Route path='wishlist' element={<Wishlist/>}/>
             <Route path='mypage' element={<Mypage/>}/>
           </Route>
-          <Route path='/react/tp-react-yanolja-clone/search' element={<Search/>}/>
-          <Route path='/react/tp-react-yanolja-clone/lodgment' element={<LodgmentDetail/>}/>
+          <Route path='/search' element={<Search/>}/>
+          <Route path='/lodgment' element={<LodgmentDetail/>}/>
         </Routes>
       </BrowserRouter>
     {/* </React.StrictMode> */}
