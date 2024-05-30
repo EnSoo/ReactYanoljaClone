@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom"
 import styled from "styled-components"
 import {Helmet} from 'react-helmet'
 import ReviewList from "../components/ReviewList"
+import KakaoMap from "../components/KakaoMap"
 const LodgmentDetail = () => {
 
     const location=useLocation()
@@ -64,9 +65,11 @@ const LodgmentDetail = () => {
                         <button style={{width:'13%', height:'26px'}}>후기 작성</button>
                     </form>
                 </div>
-                {/* 컨텐츠 정보 {item.contentid} */}
-                {/* <h2>경도 :  {item.mapx}</h2>
-                <h2>위도 : {item.mapy}</h2>*/}
+                <hr></hr>
+                <h2>위치</h2>
+                <div className="map">
+                    <KakaoMap item={item}/>
+                </div>
             </Container>
         </div>
     )
@@ -92,6 +95,7 @@ const Container=styled.div`
         margin-left: 5rem;
         margin-right: 5rem;
         margin-top: 3rem;
+        margin-bottom: 2rem;
         border: 1px solid lightgray;
         form{
             display: flex;
@@ -105,5 +109,10 @@ const Container=styled.div`
             }
         }
         padding: 1rem;
+    }
+    .map{
+        margin-left: 5rem;
+        margin-right: 5rem;
+        border: 1px solid lightgray;
     }
 `
